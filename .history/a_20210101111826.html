@@ -1,0 +1,51 @@
+- 참고로 토글의 경우 제이쿼리 버전에 따라 제대로 실행이 안되는 경우가 있으니 참고!
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+button{
+	display:block;
+	border: none;
+	border-radius:10px;
+	background-color: black;
+	color: white;
+	font-size:20px;
+	padding: 10px 20px;
+	margin: 10px; 
+}
+button:hover{
+	background-color: gray;
+}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("button").click(function() {
+			$(this).next().toggle(1000, function() {
+				alert("ok");
+			});
+		});
+	});
+	
+</script>
+</head>
+<body>
+	<button>Open & Close</button>
+	<div>
+		<h1>HTML5 Tutorial</h1>
+		<p>With HTML you can create your own Website.
+			This tutorial teaches you everything about HTML.
+			HTML is easy to learn - You will enjoy it.</p>
+	</div>
+	<button>Open & Close</button>
+	<div>
+		<h1>Examples in Every Chapter</h1>
+		<p>This HTML tutorial contains hundreds of HTML examples.With our online HTML editor, you can edit the HTML, and click on a button to view the result.</p>
+	</div>
+	
+</body>
+</html>

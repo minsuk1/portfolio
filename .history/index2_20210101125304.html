@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta http-equiv="X-UA Compatible" />
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link href="popup_layer.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    // 팝업 OPEN
+    $('#popup-open-1').on('click', function(e)  {
+        var targeted_popup_class = jQuery(this).attr('data-popup-open');
+        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+        e.preventDefault();
+    });
+ 
+    // 팝업 CLOSE
+    $('#popup-colse-1').on('click', function(e)  {
+        var targeted_popup_class = jQuery(this).attr('data-popup-close');
+        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+        e.preventDefault();
+    });
+});
+</script>
+</head>
+<body>
+<a href="#" id="popup-open-1" class="btn" data-popup-open="popup-1">Open Popup #1</a>
+<div class="popup" data-popup="popup-1">
+    <div class="popup-inner">
+        <iframe src="www.naver.com" frameborder="0" width="1200" height="500" marginwidth="0" marginheight="0"></iframe>
+        <a href="#" id="popup-colse-1" class="popup-close" data-popup-close="popup-1">x</a>
+    </div>
+</div>
+
+

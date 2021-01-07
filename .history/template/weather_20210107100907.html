@@ -1,0 +1,33 @@
+   
+                        <html lang="ko">
+                            <body>
+                            <div class = 'weather'>
+                                <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+                                <div class='CurrTemp'></div>
+                                <div class='City'></div>
+                            </div>   
+                            </body>
+
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                        <script>
+                                $(function(){
+
+                                    $.ajax({
+                                        url : 'http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=4c4254194e73b642a1003287c7a55df7&units=metric',
+                                        dataType : 'json',
+                                        type : 'GET',
+                                        success : function(data){
+                                            var iconcode = data.weather[0].icon;
+                                            console.log(iconcode)
+                                            var $Temp = Math.floor(data.main.temp);
+                                            var $city = data.name;
+
+                                            var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                                            $('#wicon').attr('src', iconurl);
+                                            $('.CurrTemp').prepend($Temp);
+                                            $('.City').prepend($city);
+                                        }
+                                    })
+                                })
+                        </script>
+                        </html>

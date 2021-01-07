@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To do List</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel='stylesheet' type="text/css" href="assets/css/style2.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0f77f25011.js"></script>
+   
+</head>
+<body>
+<div id="container">
+    <h1>To-do List<i class="fas fa-plus"></i></h1>
+    <input type="text" placeholder="할일을 입력해주세요">
+<ul>
+        <li> <span><i class="fas fa-trash"></i></span> 강아지 밥주기</li>
+        <li> <span><i class="fas fa-trash"></i></span> 운동하기</li>
+        <li> <span><i class="fas fa-trash"></i></span> 공부하기</li>
+</ul>
+</div>
+
+     <script> 
+        $("ul").on("click", "li", function() {
+    //목록 클릭씨 해당줄에 라인을 치거나 지움
+    $(this).toggleClass('completed');
+    });
+
+    //x를 클릭씨 해당 아이템을 지움
+    $('ul').on("click", "span", function(event) {
+    event.stopPropagation();
+    $(this).parent().fadeOut(500, function(){
+    $(this).remove();
+    });
+    });
+
+    $('input[type="text"]').keypress(function(event) {
+    if(event.which===13) {
+        //input으로 부터 새로운 할일 받기
+        var todoText =$(this).val();
+        $(this).val("");
+        //새로운 일을 li로 ul에 넣기
+        $('ul').append("<li><span><i class='fas fa-trash'></i></span> "+todoText+"</li>");
+    }
+    });
+
+    $('.fa-plus').on('click', function() {
+    $('input[type="text"]').fadeToggle();
+    });
+        
+        
+     
+     
+     </script>
+</body>
+</html>
